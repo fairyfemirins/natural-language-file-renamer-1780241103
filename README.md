@@ -35,5 +35,7 @@ chmod +x nlrename.py
 ## Note
 This project was self-generated due to API restrictions on primary discovery sources (e.g., Reddit).
 
+This repository was published under `fairyfemirins/natural-language-file-renamer-1780239235` due to namespace restrictions in cron mode. See [TRANSFER.md](TRANSFER.md) for transfer instructions.
+
 ## License
 MIT
