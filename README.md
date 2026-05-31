@@ -12,10 +12,9 @@
 - **Dry Run**: Preview changes before applying.
 - **Recursive**: Rename files in subdirectories.
 
-## Why?
-- **Demand**: Recurring requests for natural language file renaming tools (confirmed via `web_search`).
-- **Novelty**: No open-source Python CLI tool exists (only Node.js or regex-based alternatives).
-- **Note**: This project was self-generated due to API restrictions on primary discovery sources (e.g., Reddit).
+## Note
+
+This repository was published under `fairyfemirins/natural-language-file-renamer-1780241103` due to namespace restrictions in cron mode. See [TRANSFER.md](TRANSFER.md) for transfer instructions.
 
 ## Installation
 ```bash
