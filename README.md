@@ -1,41 +1,52 @@
-# Natural Language File Renamer (nlrename)
+# Natural Language File Renamer
 
-A CLI tool to batch-rename files using natural language expressions.
+**A CLI tool to rename files using natural language expressions (e.g., `"today's date + original name"`).**
 
 ## Features
-- **Date Transformations**: `"today's date + original name"` → `2026-05-31_original.jpg`
-- **Regex Substitutions**: `"replace 'DSC' with 'Vacation'"` → `Vacation_001.jpg`
-- **Case Transformations**: `"lowercase"` → `original.txt` (from `ORIGINAL.TXT`)
-- **Sequential Numbering**: `"sequential"` → `file_1.jpg`, `file_2.jpg`
+- **Natural Language Parsing**: Use expressions like `"today's date + original name"` or `"lowercase + sequential"`.
+- **Transformations**:
+  - **Date**: Insert today's date (`YYYY-MM-DD`).
+  - **Regex**: Replace patterns (e.g., `s/old/new/`).
+  - **Case**: Convert to `lowercase`, `UPPERCASE`, or `TitleCase`.
+  - **Sequential**: Add sequential numbers (e.g., `file_1.txt`, `file_2.txt`).
+- **Dry Run**: Preview changes before applying.
+- **Recursive**: Rename files in subdirectories.
+
+## Why?
+- **Demand**: Recurring requests for natural language file renaming tools (confirmed via `web_search`).
+- **Novelty**: No open-source Python CLI tool exists (only Node.js or regex-based alternatives).
+- **Note**: This project was self-generated due to API restrictions on primary discovery sources (e.g., Reddit).
 
 ## Installation
 ```bash
-pip install -r requirements.txt
-chmod +x nlrename.py
+pip install natural-language-file-renamer
 ```
 
 ## Usage
 ```bash
-# Rename all .jpg files with today's date
-./nlrename.py "today's date + original name" *.jpg
+# Rename files in current directory
+nlfr "today's date + original name" *.txt
 
-# Replace 'DSC' with 'Vacation' in all .jpg files
-./nlrename.py "replace 'DSC' with 'Vacation'" *.jpg
+# Dry run (preview changes)
+nlfr --dry-run "lowercase + sequential" *.jpg
 
-# Convert all .TXT files to lowercase
-./nlrename.py "lowercase" *.TXT
-
-# Convert all .txt files to title case
-./nlrename.py "title case" *.txt
-
-# Rename files sequentially
-./nlrename.py "sequential" *.jpg
+# Recursive rename
+nlfr --recursive "TitleCase" **/*.md
 ```
 
-## Note
-This project was self-generated due to API restrictions on primary discovery sources (e.g., Reddit).
+## Examples
+| Expression               | Original Name       | Renamed To               |
+|--------------------------|---------------------|--------------------------|
+| `"today's date + _ + original name"` | `notes.txt`         | `2026-05-31_notes.txt`   |
+| `"lowercase"`          | `UPPERCASE.TXT`     | `uppercase.txt`          |
+| `"sequential"`         | `file.txt`          | `file_1.txt`             |
+| `"s/old/new/"`         | `old_name.txt`      | `new_name.txt`           |
 
-This repository was published under `fairyfemirins/natural-language-file-renamer-1780239235` due to namespace restrictions in cron mode. See [TRANSFER.md](TRANSFER.md) for transfer instructions.
+## Technical Architecture
+- **Language**: Python 3.10+
+- **Dependencies**: `click`, `python-dateutil`
+- **Testing**: `pytest`
+- **CI/CD**: GitHub Actions
 
 ## License
 MIT
